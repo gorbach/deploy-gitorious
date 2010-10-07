@@ -152,6 +152,7 @@ def create_git_user():
 
 def migrate_database():
     sudo("cd /var/www/%s/gitorious ; sudo rake gems:install" % TEMPLATE_DICT['SITE_NAME'])
+    sudo("gem uninstall -I i18n")  # use the i18n in the gitorious checkout
     sudo("cd /var/www/%s/gitorious ; rake db:migrate RAILS_ENV=production" % TEMPLATE_DICT['SITE_NAME'])
 
 def permissions():
