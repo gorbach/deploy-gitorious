@@ -13,6 +13,7 @@
 # limitations under the License.
 
 from fabric.api import *
+from fabric.contrib import files
 
 TEMPLATE_DICT = {
     'SITE_NAME' : 'git.ubuntu32',
@@ -43,6 +44,12 @@ def gem(*packages):
 
 def download_packages():
     sudo("aptitude install -d -y %s" % ' '.join(PACKAGES.split()))
+
+def change_umask():
+    # Set it for the current process
+    sudo("umask 0002")
+    # And for future processes
+    files.sed("/etc/profile", "umask 022", "umask 0002", use_sudo=True)
 
 def install_packages():
     aptitude_install(' '.join(PACKAGES.split()))
@@ -197,6 +204,7 @@ def start():
     sudo('/etc/init.d/apache2 restart')
 
 def deploy():
+    change_umask()
     download_packages()
     install_packages()
     install_mysql()
