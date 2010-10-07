@@ -114,6 +114,9 @@ def configs():
     put('configs/database.yml', '~')
     sudo("mv database.yml  /var/www/%s/gitorious/config/" % TEMPLATE_DICT['SITE_NAME'])
 
+    put('configs/broker.yml', '~')
+    sudo("mv broker.yml  /var/www/%s/gitorious/config/" % TEMPLATE_DICT['SITE_NAME'])
+
 def install_gitorious():
     sudo('groupadd gitorious || true')
     sudo("usermod -a -G gitorious %s || true" % env.user)
