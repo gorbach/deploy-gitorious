@@ -152,6 +152,7 @@ def install_poller():
 def create_git_user():
     sudo('adduser --system git')
     sudo('usermod -a -G gitorious git')
+    sudo('chsh -s /bin/bash git')
     sudo('mkdir -p /var/git')
     sudo('mkdir -p /var/git/repositories')
     sudo('mkdir -p /var/git/tarballs')
