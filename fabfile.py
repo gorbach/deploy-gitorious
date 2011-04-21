@@ -15,9 +15,9 @@
 from fabric.api import *
 
 TEMPLATE_DICT = {
-    'SITE_NAME' : 'git.example.com',
-    'SITE_EMAIL' : 'admin@exampe.com',
-    'DB_PASSWORD' : 'admin'
+    'SITE_NAME' : 'git.ubuntu32',
+    'SITE_EMAIL' : 'admin@ubuntu32',
+    'DB_PASSWORD' : 'root'
 }
 
 # core packages
