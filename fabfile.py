@@ -67,7 +67,7 @@ def install_mysql():
 
 def install_rubygems():
     run('mkdir -p src')
-    run('cd src ; wget http://rubyforge.org/frs/download.php/74619/rubygems-1.3.7.tgz')
+    run('cd src ; wget http://production.cf.rubygems.org/rubygems/rubygems-1.3.7.tgz')
     run('cd src ; tar xvzf rubygems-1.3.7.tgz')
     run('cd src/rubygems-1.3.7 ; sudo ruby setup.rb')
     sudo('ln -sfn /usr/bin/gem1.8 /usr/bin/gem')
