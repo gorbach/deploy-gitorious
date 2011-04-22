@@ -122,6 +122,7 @@ def install_gitorious():
     sudo("chmod -R g+sw /var/www/%s" % TEMPLATE_DICT['SITE_NAME'])
     run("cd /var/www/%s ; mkdir -p log conf" % TEMPLATE_DICT['SITE_NAME'])
     run("cd /var/www/%s ; git clone git://gitorious.org/gitorious/mainline.git gitorious" % TEMPLATE_DICT['SITE_NAME'])
+    run("cd /var/www/%s/gitorious ; bundle install" % TEMPLATE_DICT['SITE_NAME'])
     run("cd /var/www/%s/gitorious ; rm -f public/.htaccess" % TEMPLATE_DICT['SITE_NAME'])
     run("cd /var/www/%s/gitorious ; mkdir -p tmp/pids" % TEMPLATE_DICT['SITE_NAME'])
     run("cd /var/www/%s/gitorious ; chmod ug+x script/*" % TEMPLATE_DICT['SITE_NAME'])
