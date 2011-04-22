@@ -87,7 +87,7 @@ def install_sphinx():
 
 def install_activemq():
     run('mkdir -p src')
-    run('cd src ; wget http://apache.strygunov.com//activemq/apache-activemq/5.5.0/apache-activemq-5.5.0-bin.tar.gz')
+    run('cd src ; wget http://apache.vc.ukrtel.net//activemq/apache-activemq/5.5.0/apache-activemq-5.5.0-bin.tar.gz')
     run('cd src ; sudo tar xzvf apache-activemq-5.5.0-bin.tar.gz -C /usr/local/')
     sudo('sh -c \'echo "export ACTIVEMQ_HOME=/usr/local/apache-activemq-5.5.0" \
                 >> /etc/activemq.conf\'')
