@@ -87,20 +87,20 @@ def install_sphinx():
 
 def install_activemq():
     run('mkdir -p src')
-    run('cd src ; wget http://www.powertech.no/apache/dist/activemq/apache-activemq/5.2.0/apache-activemq-5.2.0-bin.tar.gz')
-    run('cd src ; sudo tar xzvf apache-activemq-5.2.0-bin.tar.gz -C /usr/local/')
-    sudo('sh -c \'echo "export ACTIVEMQ_HOME=/usr/local/apache-activemq-5.2.0" \
+    run('cd src ; wget http://apache.strygunov.com//activemq/apache-activemq/5.5.0/apache-activemq-5.5.0-bin.tar.gz')
+    run('cd src ; sudo tar xzvf apache-activemq-5.5.0-bin.tar.gz -C /usr/local/')
+    sudo('sh -c \'echo "export ACTIVEMQ_HOME=/usr/local/apache-activemq-5.5.0" \
                 >> /etc/activemq.conf\'')
     sudo('sh -c \'echo "export JAVA_HOME=/usr/" >> /etc/activemq.conf\'')
     sudo('adduser --system --no-create-home activemq')
-    sudo('chown -R activemq /usr/local/apache-activemq-5.2.0/data')
+    sudo('chown -R activemq /usr/local/apache-activemq-5.5.0/data')
 
 def configs():
     put('configs/activemq.xml', '~')
     put('configs/activemq', '~')
     sudo('mv activemq /etc/init.d/activemq')
     sudo('chmod +x /etc/init.d/activemq')
-    sudo('mv activemq.xml /usr/local/apache-activemq-5.2.0/conf/activemq.xml')
+    sudo('mv activemq.xml /usr/local/apache-activemq-5.5.0/conf/activemq.xml')
     sudo('update-rc.d memcached defaults')
 
     from string import Template
