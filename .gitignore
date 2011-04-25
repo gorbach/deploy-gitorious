@@ -3,4 +3,5 @@ gitorious.yml
 *.swp
 env
 configs/database.yml
+configs/git-poller
 configs/git.example.com.conf

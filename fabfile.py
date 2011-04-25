@@ -138,6 +138,17 @@ def install_gitorious():
     sudo('update-rc.d -f git-daemon start 99 2 3 4 5 .')
     sudo('update-rc.d -f git-ultrasphinx start 99 2 3 4 5 .')
 
+def install_poller():
+    from string import Template
+    initd_tmpl = Template(open('configs/git-poller.tmpl', 'r').read())
+    initd = open('configs/git-poller', 'w')
+    initd.write(initd_tmpl.substitute(TEMPLATE_DICT))
+    initd.close()
+    put('configs/git-poller', '~')
+    sudo("mv git-poller  /etc/init.d/git-poller")
+    sudo('chmod +x /etc/init.d/git-poller')
+    sudo('update-rc.d -f git-poller start 99 2 3 4 5 .')
+
 def create_git_user():
     sudo('adduser --system git')
     sudo('usermod -a -G gitorious git')
